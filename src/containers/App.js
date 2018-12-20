@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person  from '../components/Persons/Person/Person'
+import Persons  from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
     state = {
@@ -49,36 +50,18 @@ class App extends Component {
   render() {
 
     let persons = null;
-    let btnClass = '';
-
     if(this.state.showPersons) {
-        btnClass = classes.Red;
         persons = (<div>
-                    {this.state.persons.map((person, index) => {
-                        return (<Person name={person.name}
-                                        age={person.age}
-                                        key={person.id}
-                                        changed={(event) => this.nameChangedHandler(event, person.id)}
-                                        click={() => this.deletePersonHandler(index)}/>);
-
-                    })}
-                           </div>);
-
-    }
-
-    const innerClasses = [];
-    if (this.state.persons.length <= 2) {
-        innerClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-        innerClasses.push(classes.bold);
+                        <Persons 
+                            persons={this.state.persons} 
+                            changed={this.nameChangedHandler} 
+                            click={this.deletePersonHandler} />
+                    </div>);
     }
 
     return (
       <div className={classes.App}>
-        <h1>This is the React Complete Guide Application!</h1>
-        <p className={innerClasses.join(' ')}>There are {this.state.persons.length} persons</p>
-        <button className={btnClass} onClick={this.tooglePersonsHandler}>Toggle Persons</button>
+        <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} toogle={this.tooglePersonsHandler}/>
         {persons}
 
       </div>
