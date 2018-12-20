@@ -1,4 +1,4 @@
-.person {
+.Person {
   display: inline-block;
   margin: 10px;
   inline: box align;
@@ -8,6 +8,11 @@
   padding: 20px;
 }
 
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+}
 
 .remove-button {
    background-color: red;

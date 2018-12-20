@@ -4,7 +4,7 @@ import classes from  './Person.css';
 const person = (props) => {
 
 return (
-  <div className={classes.person}>
+  <div className={classes.Person}>
   <h1 >I am {props.name}</h1>
   <p>I am {props.age}</p>
   <p>{props.children}</p>
