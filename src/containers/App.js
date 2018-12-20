@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons  from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -17,6 +17,20 @@ class App extends Component {
     componentDidMount(){
         console.log('App.js - Inside componentDidMount()');
     }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('Update App.js - Inside componentWillReceiveProps()', nextProps);
+    }
+
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Update App.js - Inside componentWillUpdate()', nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log('Update App.js - Inside componentDidUpdate()', this.props, this.state);
+    }
+
 
     state = {
         persons: [
@@ -75,6 +89,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
+        <button onClick={() => {this.setState({showPersons:true})}}>Show Persons</button>
         <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} toogle={this.tooglePersonsHandler} appTitle={this.props.title}/>
         {persons}
 
