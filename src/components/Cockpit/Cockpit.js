@@ -18,7 +18,7 @@ const cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>
-            <h1>This is the React Complete Guide Application!</h1>
+            <h1>{props.appTitle}</h1>
             <p className={innerClasses.join(' ')}>There are {props.persons.length} persons</p>
             <button className={btnClass} onClick={props.toogle}>Toggle Persons</button>
         </div>
