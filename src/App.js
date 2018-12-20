@@ -47,17 +47,12 @@ class App extends Component {
     };
 
   render() {
-    let style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px'
-    };
 
     let persons = null;
+    let btnClass = '';
 
     if(this.state.showPersons) {
+        btnClass = classes.Red;
         persons = (<div>
                     {this.state.persons.map((person, index) => {
                         return (<Person name={person.name}
@@ -68,7 +63,6 @@ class App extends Component {
 
                     })}
                            </div>);
-        style.backgroundColor = 'red';
 
     }
 
@@ -84,7 +78,7 @@ class App extends Component {
       <div className={classes.App}>
         <h1>This is the React Complete Guide Application!</h1>
         <p className={innerClasses.join(' ')}>There are {this.state.persons.length} persons</p>
-        <button style={style} onClick={this.tooglePersonsHandler}>Toggle Persons</button>
+        <button className={btnClass} onClick={this.tooglePersonsHandler}>Toggle Persons</button>
         {persons}
 
       </div>
