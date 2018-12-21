@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classes from  './Person.css';
 import withClassHoc from '../../../hoc/withClassHoc';
 import Aux from '../../../hoc/Aux';
@@ -30,5 +31,12 @@ componentDidMount(){
       );
   }
 }
+
+Person.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    click: PropTypes.func,
+    changed: PropTypes.func
+};
 
 export default withClassHoc(Person, classes.Person);
