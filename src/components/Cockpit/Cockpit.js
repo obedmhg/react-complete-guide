@@ -21,6 +21,7 @@ const cockpit = (props) => {
         <Aux>
             <h1>{props.appTitle}</h1>
             <p className={innerClasses.join(' ')}>There are {props.persons.length} persons</p>
+            <button className={btnClass} onClick={props.login}>Log in</button>
             <button className={btnClass} onClick={props.toogle}>Toggle Persons</button>
         </Aux>
 

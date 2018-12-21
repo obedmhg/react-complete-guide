@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from  './Person.css';
 import withClassHoc from '../../../hoc/withClassHoc';
 import Aux from '../../../hoc/Aux';
+import {AuthContext} from '../../../containers/App';
 
 class Person extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ focus() {
 
     return (
         <Aux>
+            <AuthContext.Consumer>
+                {auth => auth ? <p>I am logged in!</p> :  null}
+            </AuthContext.Consumer>
             <h1 >I am {this.props.name}</h1>
             <p>I am {this.props.age}</p>
             <p>{this.props.children}</p>

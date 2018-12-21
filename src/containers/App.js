@@ -42,7 +42,8 @@ class App extends PureComponent {
             {id: '4', name: 'Loretta', age: 4}
         ],
         showPersons: false,
-        toggleClikcCounter: 0
+        toggleClikcCounter: 0,
+        loggedIn: false
     };
 
     switchNameHandler = (newName) => {
@@ -63,6 +64,10 @@ class App extends PureComponent {
             }
         });
     };
+
+    loginHandler = () => {
+        this.setState({loggedIn : true});
+    }
 
     deletePersonHandler = (personIndex) => {
         const persons = this.state.persons.slice();
@@ -98,14 +103,20 @@ class App extends PureComponent {
     return (
         <Aux>
             <button onClick={() => {this.setState({showPersons:true})}}>Show Persons</button>
-            <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} toogle={this.tooglePersonsHandler} appTitle={this.props.title}/>
-            {persons}
+            <Cockpit 
+                showPersons={this.state.showPersons} 
+                persons={this.state.persons} 
+                toogle={this.tooglePersonsHandler} 
+                login={this.loginHandler}
+                appTitle={this.props.title}/>
+            <AuthContext.Provider value={this.state.loggedIn}>
+                {persons}
+            </AuthContext.Provider>
         </Aux>
     );
-/*
-    return React.createElement('div' , {className:'App'}, React.createElement('h1', null, 'Using React.createElement()'));
-*/
   }
 }
+
+export const AuthContext = React.createContext(false);
 
 export default withClassHoc(App, classes.App);
