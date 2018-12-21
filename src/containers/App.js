@@ -41,7 +41,8 @@ class App extends PureComponent {
             {id: '3', name: 'Mateo', age: 6},
             {id: '4', name: 'Loretta', age: 4}
         ],
-        showPersons: false
+        showPersons: false,
+        toggleClikcCounter: 0
     };
 
     switchNameHandler = (newName) => {
@@ -55,7 +56,12 @@ class App extends PureComponent {
 
     tooglePersonsHandler = () => {
         const doesShow = this.state.showPersons;
-        this.setState({showPersons : !doesShow});
+        this.setState((prevState, props) => {
+            return {
+                showPersons : !doesShow,
+                toggleClikcCounter: this.state.toggleClikcCounter + 1
+            }
+        });
     };
 
     deletePersonHandler = (personIndex) => {
