@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classes from  './Person.css';
 import withClassHoc from '../../../hoc/withClassHoc';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Auxiliary';
 import {AuthContext} from '../../../containers/App';
 
 class Person extends Component {
